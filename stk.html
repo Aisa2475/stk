@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin chuyển khoản</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://i.postimg.cc/CL68NS3P/hinh-nen-rong-dep-3d-mau-trang.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .bank-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0033cc;
+            margin-bottom: 20px;
+        }
+
+        .account-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .account-info {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .account-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0033cc;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .copy-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .download-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .qr-code {
+            width: 150px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.postimg.cc/d3dJ6mXx/Logo-MB-new.png" alt="MB Bank Logo" class="logo">
+        <div class="bank-name">MB Bank</div>
+        
+        <div class="account-name">TRAN LE HAU</div>
+        <div class="account-info">Số tài khoản MB Bank:</div>
+        <div class="account-number" id="accountNumber">8898797327</div>
+        
+        <button class="btn copy-btn" onclick="copyAccountNumber()">Sao chép số tài khoản</button>
+
+        <img src="https://i.postimg.cc/tRdQWgxb/STK.jpg" alt="QR Code" class="qr-code">
+        
+        <button class="btn download-btn" onclick="downloadQRCode()">Tải mã QR</button>
+    </div>
+
+    <script>
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById("accountNumber").innerText;
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                alert("Đã sao chép số tài khoản!");
+            }).catch((error) => {
+                alert("Không thể sao chép. Vui lòng thử lại!");
+            });
+        }
+
+        function downloadQRCode() {
+            const qrCodeUrl = "https://i.postimg.cc/tbwq0ZRs/STK.jpg?dl=1.png";
+            const a = document.createElement("a");
+            a.href = qrCodeUrl;
+            a.download = "QR_MBBank_8898797327.png";
+            a.click();
+        }
+    </script>
+</body>
+</html>
